@@ -1,10 +1,10 @@
 let grid = new Grid(10);
-let matBox = new MatBox(450, 0, 2);
+let matBox = new MatBox(450, 0, 3);
 let points;
 function setup() {
     createCanvas(800, 400);
     grid.setup();
-    points = new Points(grid);
+    points = new Points(grid,3);
 }
 function draw(){
     background(0);

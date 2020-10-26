@@ -94,4 +94,13 @@ class MatBox{
     clickEvent(mx, my){
         this.boxes.forEach(b => {if(b.isInside(mx, my))b.active=!b.active;});
     }
+
+    reset(){
+        for(var i = 0; i < this.dim; i++){
+            for(var j = 0; j < this.dim; j++){
+                const boxIdx = i + j*this.dim;
+                if(i==j)this.boxes[boxIdx].val=1;
+            }
+        }
+    }
 }
