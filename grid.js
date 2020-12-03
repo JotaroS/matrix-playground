@@ -40,6 +40,7 @@ class ClickableBox{
         this.h = h;
         this.active = false;
         this.val = 0;
+        this.text = "";
     }
 
     setup(){
@@ -54,7 +55,11 @@ class ClickableBox{
         rect(this.x, this.y, this.w, this.h);
         fill(200);
         noStroke();
-        text(round(this.val,2), this.x+3, this.y+20);
+        if(this.text !=""){
+            text(this.text, this.x+3, this.y+20);
+        }
+        else text(round(this.val,2), this.x+3, this.y+20);
+        
     }
     isInside(x, y){
         if(x >= this.x && x <= this.x+this.w && y >= this.y && y <= this.y+this.h){
@@ -102,5 +107,16 @@ class MatBox{
                 if(i==j)this.boxes[boxIdx].val=1;
             }
         }
+    }
+    setValue(vec){
+        let matvals = [[1,0,0],[0,1,0],[0,0,1]];
+        for(var i = 0; i < this.dim; i++){
+            for(var j = 0; j < this.dim; j++){
+                const boxIdx = i + j*this.dim;
+                this.boxes[boxIdx].val=vec[boxIdx];
+                matvals[j][i] = vec[boxIdx];
+            }
+        }
+        return matvals;
     }
 }

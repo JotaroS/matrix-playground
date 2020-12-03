@@ -55,3 +55,29 @@ class Points{
         this.points.forEach(p=>{ p.draw(this.mat); });
     }
 }
+
+class HomoPoints{
+    constructor(){
+        this.points = []; //typ = p5.vector
+        this._points = [];
+    }
+    draw(){
+        this.points.forEach(p=>{
+            fill(255,200,120);
+            ellipse(p.x, p.y, 20);
+        })
+    }
+    toGrid(){
+        this._points = [];
+        this.points.forEach(p=>{
+            this._points.push(
+                createVector((p.x-40)/40.0, -(p.y-height+40)/40.0)
+            );
+        })
+        console.log(this._points);
+    }
+    reset(){
+        this._points= [];
+        this.points = [];
+    }
+}
